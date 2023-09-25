@@ -1,0 +1,69 @@
+Step 1: Install Next.js 13 and next/router
+Make sure you have Next.js 13 installed in your project. If not, you can install it with:
+
+bash
+Copy code
+npm install next@13
+Next, you'll need to install the next/router package:
+
+bash
+Copy code
+npm install next/router
+Step 2: Create Pages and Components
+Create the necessary pages and components as mentioned earlier (AdminDashboard, StaffDashboard, AddProductForm).
+
+Step 3: Create the Routing Component
+Create a new file called AppRouter.js in your src folder.
+
+jsx
+Copy code
+// src/AppRouter.js
+
+import { useRouter } from 'next/router';
+
+const AppRouter = () => {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    // Add your login logic here
+    router.push('/admin');
+  };
+
+  const handleLogout = () => {
+    // Add your logout logic here
+    router.push('/login');
+  };
+
+  return (
+    <div>
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogout}>Logout</button>
+    </div>
+  );
+};
+
+export default AppRouter;
+Step 4: Update App Component
+In your pages/_app.js file, import and include the AppRouter component.
+
+jsx
+Copy code
+// pages/_app.js
+
+import AppRouter from '../src/AppRouter';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <AppRouter />
+    </>
+  );
+}
+
+export default MyApp;
+Step 5: Update Pages
+Make sure to handle the login and logout logic in your Login and Logout components.
+
+Step 6: Test
+Start your Next.js 13 application using npm run dev and test the login and logout functionality.
